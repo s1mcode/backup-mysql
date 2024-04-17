@@ -1,6 +1,6 @@
 ## 配置
 
-```
+```sh
 # 修改 my.cnf，设置 mysql 的用户名、密码、主机名
 vim my.cnf
 
