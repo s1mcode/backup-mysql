@@ -7,7 +7,7 @@ DATABASES=("database1" "database2")
 BACKUP_DIR="/path/to/your/backup/directory"
 
 # 日志文件路径
-LOG_FILE="${BACKUP_DIR}/backup_log_$(date +%Y%m%d).log"
+LOG_FILE="${BACKUP_DIR}/backup_log.log"
 
 # 确保备份目录存在
 mkdir -p "${BACKUP_DIR}"
@@ -23,10 +23,10 @@ do
 
     # 定义备份文件的完整路径，文件名以当前时间开头
     BACKUP_FILE="${BACKUP_DIR}/$(date +%Y%m%d%H%M)_${DB}.sql"
-    
+
     # 执行备份命令并将输出结果重定向到日志文件
     mysqldump --defaults-file=my.cnf "${DB}" > "${BACKUP_FILE}" 2>>"${LOG_FILE}"
-    
+
     # 获取备份操作后的当前时间
     CURRENT_TIME=$(date +"%Y-%m-%d %H:%M:%S")
 
