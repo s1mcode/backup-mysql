@@ -1,7 +1,7 @@
 ## 配置
 
 ```sh
-# 修改 mysql.cnf，设置 mysql 的用户名、密码、主机名
+# 修改 mysql.cnf，设置 mysql 的主机名、端口、用户名、密码；如需加密连接可开启 ssl-mode / ssl-ca
 vim mysql.cnf
 
 # 修改 backup_config.ini，配置需要备份的数据库、备份文件存放目录、保留策略

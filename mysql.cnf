@@ -1,4 +1,11 @@
 [client]
+host=localhost
+port=3306
 user=root
 password=your_password
-host=localhost
+
+# TLS/SSL：按需开启，ssl-mode=VERIFY_IDENTITY 强制加密并校验服务端证书与主机名
+#ssl-mode=VERIFY_IDENTITY
+# CA 证书路径，取消对应系统那行的注释即可用系统根证书校验：
+#ssl-ca=/etc/ssl/certs/ca-certificates.crt      # Ubuntu/Debian
+#ssl-ca=/etc/pki/tls/certs/ca-bundle.crt        # RHEL/CentOS/Fedora
