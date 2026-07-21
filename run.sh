@@ -147,15 +147,18 @@ do
 
     # 执行备份命令并将输出结果重定向到日志文件
     mysqldump --defaults-file=mysql.cnf "${DB}" > "${BACKUP_FILE}" 2>>"${LOG_FILE}"
+    DUMP_STATUS=$?
 
     # 获取备份操作后的当前时间
     CURRENT_TIME=$($DATE_CMD +"%Y-%m-%d %H:%M:%S")
 
     # 检查备份是否成功，并将结果与时间写入日志文件
-    if [ $? -eq 0 ]; then
+    if [ $DUMP_STATUS -eq 0 ]; then
         echo "${CURRENT_TIME} - 数据库 ${DB} 备份成功。" >> "${LOG_FILE}"
     else
-        echo "${CURRENT_TIME} - 备份数据库 ${DB} 时出错" >> "${LOG_FILE}"
+        echo "${CURRENT_TIME} - 备份数据库 ${DB} 时出错，删除无效的备份文件。" >> "${LOG_FILE}"
+        rm -f "${BACKUP_FILE}"
+        continue
     fi
 
     # 清理旧的备份文件

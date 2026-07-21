@@ -1,3 +1,18 @@
+## 依赖
+
+脚本依赖 `mysqldump`（mysql-client），未安装会报 `mysqldump: command not found` 且备份出 0 字节空文件：
+
+```sh
+# Debian/Ubuntu（若报 404，先执行 apt update 刷新索引）
+apt update && apt install -y mysql-client   # 或 mariadb-client
+
+# RHEL/CentOS/Fedora
+dnf install -y mysql                         # 或 mariadb
+
+# 验证
+which mysqldump
+```
+
 ## 配置
 
 ```sh
